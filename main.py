@@ -110,12 +110,10 @@ if quest == 2:
                         print("Voce consegue correr devido a sua grande agilidade de arador de campos")
                         print(cores.WARNING + "Voce Escapou! Os monstros ficaram vivos aterrorizando mythril!" + cores.ENDC)
                         break
-                        ligar = False
                     elif player.tipo == "Mago":
                         print("Voce consegue correr mas deixa cair seu cajado")
                         print(cores.OKBLUE + "Voce Escapou! Os monstros ficaram vivos aterrorizando mythril!" + cores.ENDC)
                         break
-                        ligar = False
                     print("Voce consegue correr no momento em que ve ele mas deixa cair seu celular")
                     print(cores.FAIL + "Voce Perdeu!" + cores.ENDC)
                     print("==========================================================================================")
@@ -145,7 +143,6 @@ if quest == 2:
                         continue
                     else:
                         break
-                        ligar = False
                 elif primeira_escolha == 2:
                     dano = str(player.gerar_dano())
                     print(
@@ -179,12 +176,10 @@ if quest == 2:
                         print("Voce consegue correr devido a sua grande agilidade de arador de campos")
                         print(cores.WARNING + "Voce Escapou! Os monstros ficaram vivos aterrorizando mythril!" + cores.ENDC)
                         break
-                        ligar = False
                     elif player.tipo == "Mago":
                         print("Voce consegue correr mas deixa cair seu cajado")
                         print(cores.OKBLUE + "Voce Escapou! Os monstros ficaram vivos aterrorizando mythril!" + cores.ENDC)
                         break
-                        ligar = False
                     print("Voce consegue correr no momento em que ve ele mas deixa cair seu celular")
                     print(cores.FAIL + "Voce Perdeu!" + cores.ENDC)
                     print("==========================================================================================")
@@ -312,12 +307,10 @@ else:
                         print("Voce consegue correr devido a sua grande agilidade de arador de campos")
                         print(cores.WARNING + "Voce Escapou! Os monstros ficaram vivos aterrorizando mythril!" + cores.ENDC)
                         break
-                        ligar = False
                     elif player.tipo == "Mago":
                         print("Voce consegue correr mas deixa cair seu cajado")
                         print(cores.OKBLUE + "Voce Escapou! Os monstros ficaram vivos aterrorizando mythril!" + cores.ENDC)
                         break
-                        ligar = False
                     print("Voce consegue correr no momento em que ve ele mas deixa cair seu celular")
                     print(cores.FAIL + "Voce Perdeu!" + cores.ENDC)
                     print("==========================================================================================")
@@ -347,7 +340,6 @@ else:
                         continue
                     else:
                         break
-                        ligar = False
                 elif primeira_escolha == 2:
                     dano = str(player.gerar_dano())
                     print(
@@ -381,12 +373,10 @@ else:
                         print("Voce consegue correr devido a sua grande agilidade de arador de campos")
                         print(cores.WARNING + "Voce Escapou! Os monstros ficaram vivos aterrorizando mythril!" + cores.ENDC)
                         break
-                        ligar = False
                     elif player.tipo == "Mago":
                         print("Voce consegue correr mas deixa cair seu cajado")
                         print(cores.OKBLUE + "Voce Escapou! Os monstros ficaram vivos aterrorizando mythril!" + cores.ENDC)
                         break
-                        ligar = False
                     print("Voce consegue correr no momento em que ve ele mas deixa cair seu celular")
                     print(cores.FAIL + "Voce Perdeu!" + cores.ENDC)
                     print("==========================================================================================")
@@ -416,7 +406,6 @@ else:
                         continue
                     else:
                         break
-                        ligar = False
                 elif primeira_escolha == 2:
                     dano = str(player.gerar_dano())
                     rato.levar_dano(int(dano))
