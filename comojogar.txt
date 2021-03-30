@@ -1,1 +1,1 @@
-Se tiver o Python3 no PC é só utilizar o comando python3 main.py no terminal! Dentro da pasta do mythirl.
+Se tiver o Python3 no PC é só utilizar o comando python3 main.py no terminal! Dentro da pasta do mythril.
