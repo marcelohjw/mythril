@@ -42,7 +42,6 @@ else:
 
     ligar = True
 
-
     while ligar:
         print("----------------------------------------------------------")
 
@@ -108,7 +107,8 @@ else:
                         break
                     elif player.tipo == "Mago":
                         print("Voce consegue correr mas deixa cair seu cajado")
-                        print(cores.OKBLUE + "Voce Escapou! Os monstros ficaram vivos aterrorizando mythril!" + cores.ENDC)
+                        print(
+                            cores.OKBLUE + "Voce Escapou! Os monstros ficaram vivos aterrorizando mythril!" + cores.ENDC)
                         questao = input("Deseja salvar seu nome? Sim(S)/Nao(N): ")
                         questao = questao.lower()
                         if questao == "s":
@@ -124,7 +124,8 @@ else:
                     if novamente == "s":
                         escolha2 = random.randrange(1, 4)
                         if escolha2 == 1:
-                            print("Ola", cores.FAIL + nome + cores.ENDC, "bem vindo,", "voce esta com a classe Guerreiro!")
+                            print("Ola", cores.FAIL + nome + cores.ENDC, "bem vindo,",
+                                  "voce esta com a classe Guerreiro!")
                             # Instancia do Guerreiro
                             player = Pessoa("Guerreiro", nome, 900, 10, 200, 70)
                             player.status()
@@ -160,8 +161,13 @@ else:
                         print(cores.FAIL + ladrao.nome + " foi derrotado." + cores.ENDC)
                     else:
                         ladrao.status_inimigo()
+                elif primeira_escolha == 3:
+                    if player.tipo == "Campones":
+                        print("Você cava um buraco e se joga nele escapando de seu inimigo!")
+                        print(cores.WARNING + "Voce Escapou! Os monstros ficaram vivos aterrorizando mythril!" + cores.ENDC)
+                        break
                 else:
-                    print("Digite 1 ou 2!")
+                    print("Digite 1, 2 ou 3!")
                     continue
                 if ladrao.obter_hp() == 0:
                     print(cores.OKGREEN + "Voce Venceu " + ladrao.nome + "!" + cores.ENDC)
@@ -182,7 +188,8 @@ else:
                 if primeira_escolha == 1:
                     if player.tipo == "Campones":
                         print("Voce consegue correr devido a sua grande agilidade de arador de campos")
-                        print(cores.WARNING + "Voce Escapou! Os monstros ficaram vivos aterrorizando mythril!" + cores.ENDC)
+                        print(
+                            cores.WARNING + "Voce Escapou! Os monstros ficaram vivos aterrorizando mythril!" + cores.ENDC)
                         questao = input("Deseja salvar seu nome? Sim(S)/Nao(N): ")
                         questao = questao.lower()
                         if questao == "s":
@@ -192,7 +199,8 @@ else:
                         break
                     elif player.tipo == "Mago":
                         print("Voce consegue correr mas deixa cair seu cajado")
-                        print(cores.OKBLUE + "Voce Escapou! Os monstros ficaram vivos aterrorizando mythril!" + cores.ENDC)
+                        print(
+                            cores.OKBLUE + "Voce Escapou! Os monstros ficaram vivos aterrorizando mythril!" + cores.ENDC)
                         questao = input("Deseja salvar seu nome? Sim(S)/Nao(N): ")
                         questao = questao.lower()
                         if questao == "s":
@@ -208,7 +216,8 @@ else:
                     if novamente == "s":
                         escolha2 = random.randrange(1, 4)
                         if escolha2 == 1:
-                            print("Ola", cores.FAIL + nome + cores.ENDC, "bem vindo,", "voce esta com a classe Guerreiro!")
+                            print("Ola", cores.FAIL + nome + cores.ENDC, "bem vindo,",
+                                  "voce esta com a classe Guerreiro!")
                             # Instancia do Guerreiro
                             player = Pessoa("Guerreiro", nome, 900, 10, 200, 70)
                             player.status()

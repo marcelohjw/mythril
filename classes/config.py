@@ -23,14 +23,27 @@ class Pessoa:
         self.atka = atka
         self.atkb = atkb
         self.opcoes = ["Correr", "Atacar"]
+        self.opcoes_mago = ["Correr", "Atacar", "Magia"]
+        self.opcoes_campones = ["Correr", "Atacar", "Cavar Buraco"]
 
     def definir_acao(self):
         i = 1
         print("\n" + cores.BOLD + self.nome + cores.ENDC)
-        print(cores.OKBLUE + cores.BOLD + "Acoes" + cores.ENDC)
-        for item in self.opcoes:
-            print("    " + str(i) + ":", item)
-            i += 1
+        if self.tipo == "Guerreiro":
+            print(cores.FAIL + cores.BOLD + "Acoes" + cores.ENDC)
+            for item in self.opcoes:
+                print("    " + str(i) + ":", item)
+                i += 1
+        elif self.tipo == "Mago":
+            print(cores.OKBLUE + cores.BOLD + "Acoes" + cores.ENDC)
+            for item in self.opcoes_mago:
+                print("    " + str(i) + ":", item)
+                i += 1
+        elif self.tipo == "Campones":
+            print(cores.WARNING + cores.BOLD + "Acoes" + cores.ENDC)
+            for item in self.opcoes_campones:
+                print("    " + str(i) + ":", item)
+                i += 1
 
     def status(self):
         hp_bar = ""

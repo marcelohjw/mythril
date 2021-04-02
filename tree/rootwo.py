@@ -151,8 +151,13 @@ while ligar:
                     print(cores.FAIL + ladrao.nome + " foi derrotado." + cores.ENDC)
                 else:
                     ladrao.status_inimigo()
+            elif primeira_escolha == 3:
+                if player.tipo == "Campones":
+                    print("Você cava um buraco e se joga nele escapando de seu inimigo!")
+                    print(cores.WARNING + "Voce Escapou! Os monstros ficaram vivos aterrorizando mythril!" + cores.ENDC)
+                    break
             else:
-                print("Digite 1 ou 2!")
+                print("Digite 1, 2 ou 3!")
                 continue
             if ladrao.obter_hp() == 0:
                 print(cores.OKGREEN + "Voce Venceu " + ladrao.nome + "!" + cores.ENDC)
@@ -241,6 +246,12 @@ while ligar:
                     print(
                         rato.nome + " ataca voce e atinge " + dano + " pontos de " + cores.FAIL + "vida(HP)" + cores.ENDC + " com sua leptospirose!")
                     player.status()
+            elif primeira_escolha == 3:
+                if player.tipo == "Campones":
+                    print("Você cava um buraco e se joga nele escapando de seu inimigo!")
+                    print(
+                        cores.WARNING + "Voce Escapou! Os monstros ficaram vivos aterrorizando mythril!" + cores.ENDC)
+                    break
             else:
-                print("Digite 1 ou 2!")
+                print("Digite 1, 2 ou 3!")
                 continue
