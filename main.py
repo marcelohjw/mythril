@@ -17,7 +17,7 @@ if os.path.isfile("./save.txt") and os.stat("./save.txt").st_size != 0:
     if first_quest == "s":
         print("Voce ja tentou sua vez!")
     else:
-        import rootone
+        from tree import rootone
 else:
     print(cores.FAIL + "Nome antigo nao encontrado..." + cores.ENDC)
-    import rootone
+    from tree import rootone

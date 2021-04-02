@@ -14,7 +14,7 @@ for modo in modos:
     print(modo)
 quest = int(input("Voce deseja jogar em que modo? : "))
 if quest == 2:
-    import rootwo
+    from tree import rootwo
 else:
     print("Sua classe sera escolhida de forma aleatoria!")
     nome = input("Qual o seu nome? : ")
