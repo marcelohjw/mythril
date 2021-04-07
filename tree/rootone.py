@@ -3,6 +3,7 @@ from classes.config import Pessoa
 from classes.config import Animal
 
 import random
+import os
 
 print("------------------------------------------------------------------------------------------")
 print("Modos de Jogo:")
@@ -17,7 +18,11 @@ if quest == 2:
     from tree import rootwo
 else:
     print("Sua classe sera escolhida de forma aleatoria!")
-    nome = input("Qual o seu nome? : ")
+    if os.path.isfile("././save.txt") and os.stat("./save.txt").st_size != 0:
+        save_antigo = open("./save.txt", "r+")
+        nome = save_antigo.read()
+    else:
+        nome = input("Qual o seu nome? : ")
     escolha = random.randrange(1, 4)
     if escolha == 1:
         # Instancia do Guerreiro

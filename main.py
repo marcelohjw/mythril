@@ -15,7 +15,8 @@ if os.path.isfile("./save.txt") and os.stat("./save.txt").st_size != 0:
     save_antigo = open("./save.txt", "r+")
     first_quest = input("Voce se chama {}? Sim(S)/Nao(N): ".format(save_antigo.read()))
     if first_quest == "s":
-        print("Voce ja tentou sua vez! Saia!")
+        print("Bem vindo novamente!")
+        from tree import rootone
     else:
         from tree import rootone
 else:
