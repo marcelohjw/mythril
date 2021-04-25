@@ -1,6 +1,7 @@
 from classes.config import cores
 from classes.config import Pessoa
 from classes.config import Animal
+from classes.magias import Magias
 
 import random
 import os
@@ -26,23 +27,25 @@ else:
     escolha = random.randrange(1, 4)
     if escolha == 1:
         # Instancia do Guerreiro
-        player = Pessoa("Guerreiro", nome, 900, 10, 200, 70)
+        player = Pessoa("Guerreiro", nome, 900, 10, 200, 70, [])
         print("Ola", cores.FAIL + player.nome + cores.ENDC, "bem vindo,", "voce esta com a classe Guerreiro!")
         player.status()
     if escolha == 2:
         # Instancia do Mago
-        player = Pessoa("Mago", nome, 600, 150, 30, 15)
+        fogo = Magias("Fogo", 20, 100, "negra")
+        magias_mago = [fogo]
+        player = Pessoa("Mago", nome, 600, 150, 30, 15, magias_mago)
         print("Ola", cores.OKBLUE + player.nome + cores.ENDC, "bem vindo,", "voce esta com a classe Mago!")
         player.status()
     if escolha == 3:
         # Instancia do Campones
-        player = Pessoa("Campones", nome, 200, 10, 10, 5)
+        player = Pessoa("Campones", nome, 200, 10, 10, 5, [])
         print("Ola", cores.WARNING + player.nome + cores.ENDC, "bem vindo,", "voce esta com a classe Campones!")
         player.status()
     print("\n")
 
     # Instancia de Inimigos
-    ladrao = Pessoa("Ladrao", "Shrek", 600, 10, 200, 120)
+    ladrao = Pessoa("Ladrao", "Shrek", 600, 10, 200, 120, [])
     rato = Animal("Rato", 300, 20, 380, 250)
 
     ligar = True
@@ -80,7 +83,7 @@ else:
                     print("Ola", cores.WARNING + player.nome + cores.ENDC, "bem vindo,", "voce esta com a classe Campones!")
                     player.status()
                 # Instancia de Inimigos
-                ladrao = Pessoa("Ladrao", "Shrek", 600, 10, 200, 120)
+                ladrao = Pessoa("Ladrao", "Shrek", 600, 10, 200, 120, [])
                 rato = Animal("Rato", 300, 20, 380, 250)
                 continue
             else:
@@ -146,7 +149,7 @@ else:
                                   "voce esta com a classe Campones!")
                             player.status()
                         # Instancia de Inimigos
-                        ladrao = Pessoa("Ladrao", "Shrek", 600, 10, 200, 120)
+                        ladrao = Pessoa("Ladrao", "Shrek", 600, 10, 200, 120, [])
                         rato = Animal("Rato", 300, 20, 380, 250)
                         continue
                     else:
@@ -171,6 +174,8 @@ else:
                         print("Você cava um buraco e se joga nele escapando de seu inimigo!")
                         print(cores.WARNING + "Voce Escapou! Os monstros ficaram vivos aterrorizando mythril!" + cores.ENDC)
                         break
+                    elif player.tipo == "Mago":
+                        print("Magias de mago")
                 else:
                     print("Digite 1, 2 ou 3!")
                     continue
@@ -238,7 +243,7 @@ else:
                                   "voce esta com a classe Campones!")
                             player.status()
                         # Instancia de Inimigos
-                        ladrao = Pessoa("Ladrao", "Shrek", 600, 10, 200, 120)
+                        ladrao = Pessoa("Ladrao", "Shrek", 600, 10, 200, 120, [])
                         rato = Animal("Rato", 300, 20, 380, 250)
                         continue
                     else:

@@ -13,7 +13,7 @@ class cores:
 
 
 class Pessoa:
-    def __init__(self, tipo, nome, hp, mp, atka, atkb):
+    def __init__(self, tipo, nome, hp, mp, atka, atkb, magias):
         self.hp = hp
         self.mp = mp
         self.maxhp = hp
@@ -25,6 +25,7 @@ class Pessoa:
         self.opcoes = ["Correr", "Atacar"]
         self.opcoes_mago = ["Correr", "Atacar", "Magia"]
         self.opcoes_campones = ["Correr", "Atacar", "Cavar Buraco"]
+        self.magias = magias
 
     def definir_acao(self):
         i = 1
@@ -44,6 +45,13 @@ class Pessoa:
             for item in self.opcoes_campones:
                 print("    " + str(i) + ":", item)
                 i += 1
+
+    def definir_magia(self):
+        i = 1
+        print(cores.OKBLUE + cores.BOLD + "Magic" + cores.ENDC)
+        for spell in self.magias:
+            print("    " + str(i) + ":", spell.name, "(Cost:", str(spell.cost) + ")")
+            i += 1
 
     def status(self):
         hp_bar = ""
