@@ -69,17 +69,17 @@ else:
                 escolha2 = random.randrange(1, 4)
                 if escolha2 == 1:
                     # Instancia do Guerreiro
-                    player = Pessoa("Guerreiro", nome, 900, 10, 200, 70)
+                    player = Pessoa("Guerreiro", nome, 900, 10, 200, 70, [])
                     print("Ola", cores.FAIL + player.nome + cores.ENDC, "bem vindo,", "voce esta com a classe Guerreiro!")
                     player.status()
                 if escolha2 == 2:
                     # Instancia do Mago
-                    player = Pessoa("Mago", nome, 600, 150, 30, 15)
+                    player = Pessoa("Mago", nome, 600, 150, 30, 15, [])
                     print("Ola", cores.OKBLUE + player.nome + cores.ENDC, "bem vindo,", "voce esta com a classe Mago!")
                     player.status()
                 if escolha2 == 3:
                     # Instancia do Campones
-                    player = Pessoa("Campones", nome, 200, 10, 10, 5)
+                    player = Pessoa("Campones", nome, 200, 10, 10, 5, [])
                     print("Ola", cores.WARNING + player.nome + cores.ENDC, "bem vindo,", "voce esta com a classe Campones!")
                     player.status()
                 # Instancia de Inimigos
@@ -133,18 +133,18 @@ else:
                         escolha2 = random.randrange(1, 4)
                         if escolha2 == 1:
                             # Instancia do Guerreiro
-                            player = Pessoa("Guerreiro", nome, 900, 10, 200, 70)
+                            player = Pessoa("Guerreiro", nome, 900, 10, 200, 70, [])
                             print("Ola", cores.FAIL + player.nome + cores.ENDC, "bem vindo,",
                                   "voce esta com a classe Guerreiro!")
                             player.status()
                         if escolha2 == 2:
                             # Instancia do Mago
-                            player = Pessoa("Mago", nome, 600, 150, 30, 15)
+                            player = Pessoa("Mago", nome, 600, 150, 30, 15, [])
                             print("Ola", cores.OKBLUE + player.nome + cores.ENDC, "bem vindo,", "voce esta com a classe Mago!")
                             player.status()
                         if escolha2 == 3:
                             # Instancia do Campones
-                            player = Pessoa("Campones", nome, 200, 10, 10, 5)
+                            player = Pessoa("Campones", nome, 200, 10, 10, 5, [])
                             print("Ola", cores.WARNING + player.nome + cores.ENDC, "bem vindo,",
                                   "voce esta com a classe Campones!")
                             player.status()
@@ -227,18 +227,18 @@ else:
                         escolha2 = random.randrange(1, 4)
                         if escolha2 == 1:
                             # Instancia do Guerreiro
-                            player = Pessoa("Guerreiro", nome, 900, 10, 200, 70)
+                            player = Pessoa("Guerreiro", nome, 900, 10, 200, 70, [])
                             print("Ola", cores.FAIL + player.nome + cores.ENDC, "bem vindo,",
                                   "voce esta com a classe Guerreiro!")
                             player.status()
                         if escolha2 == 2:
                             # Instancia do Mago
-                            player = Pessoa("Mago", nome, 600, 150, 30, 15)
+                            player = Pessoa("Mago", nome, 600, 150, 30, 15, [])
                             print("Ola", cores.OKBLUE + player.nome + cores.ENDC, "bem vindo,", "voce esta com a classe Mago!")
                             player.status()
                         if escolha2 == 3:
                             # Instancia do Campones
-                            player = Pessoa("Campones", nome, 200, 10, 10, 5)
+                            player = Pessoa("Campones", nome, 200, 10, 10, 5, [])
                             print("Ola", cores.WARNING + player.nome + cores.ENDC, "bem vindo,",
                                   "voce esta com a classe Campones!")
                             player.status()
