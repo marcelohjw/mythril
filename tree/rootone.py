@@ -10,15 +10,15 @@ print("-------------------------------------------------------------------------
 print("Modos de Jogo:")
 
 modos = ["1.    O jogo define a Classe por voce",
-         "2.    Voce escolhe sua Classe"]
+         "2.    Você escolhe sua Classe"]
 
 for modo in modos:
     print(modo)
-quest = int(input("Voce deseja jogar em que modo? : "))
+quest = int(input("Você deseja jogar em que modo? : "))
 if quest == 2:
     from tree import rootwo
 else:
-    print("Sua classe sera escolhida de forma aleatoria!")
+    print("Sua classe será escolhida de forma aleatória!")
     if os.path.isfile("././save.txt") and os.stat("./save.txt").st_size != 0:
         save_antigo = open("./save.txt", "r+")
         nome = save_antigo.read()
@@ -28,40 +28,42 @@ else:
     if escolha == 1:
         # Instancia do Guerreiro
         player = Pessoa("Guerreiro", nome, 900, 10, 200, 70, [])
-        print("Ola", cores.FAIL + player.nome + cores.ENDC, "bem vindo,", "voce esta com a classe Guerreiro!")
+        print("Ola", cores.FAIL + player.nome + cores.ENDC, "bem vindo,", "você está com a classe Guerreiro!")
         player.status()
     if escolha == 2:
         # Instancia do Mago
         fogo = Magias("Fogo", 20, 100, "negra")
         magias_mago = [fogo]
         player = Pessoa("Mago", nome, 600, 150, 30, 15, magias_mago)
-        print("Ola", cores.OKBLUE + player.nome + cores.ENDC, "bem vindo,", "voce esta com a classe Mago!")
+        print("Ola", cores.OKBLUE + player.nome + cores.ENDC, "bem vindo,", "você está com a classe Mago!")
         player.status()
     if escolha == 3:
         # Instancia do Campones
-        player = Pessoa("Campones", nome, 200, 10, 10, 5, [])
-        print("Ola", cores.WARNING + player.nome + cores.ENDC, "bem vindo,", "voce esta com a classe Campones!")
+        player = Pessoa("Camponês", nome, 200, 10, 10, 5, [])
+        print("Ola", cores.WARNING + player.nome + cores.ENDC, "bem vindo,", "você está com a classe Camponês!")
         player.status()
     print("\n")
 
     # Instancia de Inimigos
-    ladrao = Pessoa("Ladrao", "Shrek", 600, 10, 200, 120, [])
+    ladrao = Pessoa("Ladrão", "Shrek", 600, 10, 200, 120, [])
     rato = Animal("Rato", 300, 20, 380, 250)
 
     ligar = True
 
     while ligar:
         print("----------------------------------------------------------")
+        print(cores.HEADER + "NOVO TURNO" + cores.ENDC)
+        print("----------------------------------------------------------")
 
         # Verificar se acabou
         if ladrao.obter_hp() == 0:
-            print(cores.OKGREEN + "Voce Venceu " + ladrao.nome + "!" + cores.ENDC)
+            print(cores.OKGREEN + "Você Venceu " + ladrao.nome + "!" + cores.ENDC)
             ligar = False
         elif rato.obter_hp() == 0:
-            print(cores.OKGREEN + "Voce Venceu " + rato.nome + "!" + cores.ENDC)
+            print(cores.OKGREEN + "Você Venceu " + rato.nome + "!" + cores.ENDC)
             ligar = False
         if player.obter_hp() == 0:
-            print(cores.FAIL + "Voce Perdeu!" + cores.ENDC)
+            print(cores.FAIL + "Você Perdeu!" + cores.ENDC)
             print("==========================================================================================")
             novamente = input("Tentar Novamente? Sim(S)/Nao(N): ")
             novamente = novamente.lower()
@@ -70,20 +72,20 @@ else:
                 if escolha2 == 1:
                     # Instancia do Guerreiro
                     player = Pessoa("Guerreiro", nome, 900, 10, 200, 70, [])
-                    print("Ola", cores.FAIL + player.nome + cores.ENDC, "bem vindo,", "voce esta com a classe Guerreiro!")
+                    print("Olá", cores.FAIL + player.nome + cores.ENDC, "bem vindo,", "você está com a classe Guerreiro!")
                     player.status()
                 if escolha2 == 2:
                     # Instancia do Mago
                     player = Pessoa("Mago", nome, 600, 150, 30, 15, [])
-                    print("Ola", cores.OKBLUE + player.nome + cores.ENDC, "bem vindo,", "voce esta com a classe Mago!")
+                    print("Olá", cores.OKBLUE + player.nome + cores.ENDC, "bem vindo,", "você está com a classe Mago!")
                     player.status()
                 if escolha2 == 3:
                     # Instancia do Campones
                     player = Pessoa("Campones", nome, 200, 10, 10, 5, [])
-                    print("Ola", cores.WARNING + player.nome + cores.ENDC, "bem vindo,", "voce esta com a classe Campones!")
+                    print("Olá", cores.WARNING + player.nome + cores.ENDC, "bem vindo,", "você está com a classe Campones!")
                     player.status()
                 # Instancia de Inimigos
-                ladrao = Pessoa("Ladrao", "Shrek", 600, 10, 200, 120, [])
+                ladrao = Pessoa("Ladrão", "Shrek", 600, 10, 200, 120, [])
                 rato = Animal("Rato", 300, 20, 380, 250)
                 continue
             else:
@@ -176,6 +178,8 @@ else:
                         break
                     elif player.tipo == "Mago":
                         print("Magias de mago")
+                    elif player.tipo == "Guerreiro":
+                        print("MOSTRAR EQUIPAMENTOS")
                 else:
                     print("Digite 1, 2 ou 3!")
                     continue
@@ -270,5 +274,5 @@ else:
                             rato.nome + " ataca voce e atinge " + dano + " pontos de " + cores.FAIL + "vida(HP)" + cores.ENDC + " com sua leptospirose!")
                         player.status()
                 else:
-                    print("Digite 1 ou 2!")
+                    print("MOSTRAR EQUIPAMENTOS")
                     continue

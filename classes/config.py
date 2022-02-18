@@ -22,7 +22,7 @@ class Pessoa:
         self.nome = nome
         self.atka = atka
         self.atkb = atkb
-        self.opcoes = ["Correr", "Atacar"]
+        self.opcoes = ["Correr", "Atacar", "Verificar Equipamentos"]
         self.opcoes_mago = ["Correr", "Atacar", "Magia"]
         self.opcoes_campones = ["Correr", "Atacar", "Cavar Buraco"]
         self.magias = magias
