@@ -48,9 +48,9 @@ class Pessoa:
 
     def definir_magia(self):
         i = 1
-        print(cores.OKBLUE + cores.BOLD + "Magic" + cores.ENDC)
+        print(cores.OKBLUE + cores.BOLD + "Magias" + cores.ENDC)
         for spell in self.magias:
-            print("    " + str(i) + ":", spell.name, "(Cost:", str(spell.cost) + ")")
+            print("    " + str(i) + ":", spell.nome, "(Cost:", str(spell.custo) + ")")
             i += 1
 
     def status(self):
