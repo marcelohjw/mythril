@@ -1,6 +1,8 @@
 from classes.config import cores
 from classes.config import Pessoa
 from classes.config import Animal
+from classes.magias import Magias
+
 
 import random
 
@@ -22,17 +24,21 @@ escolha = int(input("Escolha: "))
 nome = input("Qual o seu nome? ")
 if escolha == 1:
     print("Ola", cores.FAIL + nome + cores.ENDC, "bem vindo,", "voce esta com a classe Guerreiro!")
-    # Instancia do Guerreiro
+    # Instancia do Guerreiro SUA ESCOLHA
     player = Pessoa("Guerreiro", nome, 900, 10, 200, 70, [])
     player.status()
 if escolha == 2:
     print("Ola", cores.OKBLUE + nome + cores.ENDC, "bem vindo,", "voce esta com a classe Mago!")
-    # Instancia do Mago
-    player = Pessoa("Mago", nome, 600, 150, 30, 15, [])
+    # Instancia do Mago SUA ESCOLHA
+    fogo = Magias("Fogo", 20, 100, "basica")
+    agua = Magias("Água", 20, 100, "basica")
+    negra = Magias("Negra", 80, 400, "negra")
+    magias_mago = [fogo, agua, negra]
+    player = Pessoa("Mago", nome, 600, 150, 30, 15, magias_mago)
     player.status()
 if escolha == 3:
     print("Ola", cores.WARNING + nome + cores.ENDC, "bem vindo,", "voce esta com a classe Campones!")
-    # Instancia do Campones
+    # Instancia do Campones SUA ESCOLHA
     player = Pessoa("Campones", nome, 200, 10, 10, 5), []
     player.status()
 print("\n")
@@ -43,7 +49,10 @@ rato = Animal("Rato", 300, 20, 380, 250)
 
 ligar = True
 
+# COMEÇA O JOGO PELA PRIMEIRA VEZ
 while ligar:
+    print("----------------------------------------------------------")
+    print(cores.HEADER + "NOVO TURNO" + cores.ENDC)
     print("----------------------------------------------------------")
 
     # Verificar se acabou
@@ -53,7 +62,7 @@ while ligar:
     elif rato.obter_hp() == 0:
         print(cores.OKGREEN + "Voce Venceu " + rato.nome + "!" + cores.ENDC)
         ligar = False
-    if player.obter_hp() == 0:
+    elif player.obter_hp() == 0:
         print(cores.FAIL + "Voce Perdeu!" + cores.ENDC)
         print("==========================================================================================")
         novamente = input("Tentar Novamente? Sim(S)/Nao(N): ")
@@ -69,17 +78,17 @@ while ligar:
             escolha2 = random.randrange(1, 4)
             if escolha2 == 1:
                 print("Ola", cores.FAIL + nome + cores.ENDC, "bem vindo,", "voce esta com a classe Guerreiro!")
-                # Instancia do Guerreiro
+                # Instancia do Guerreiro SUA ESCOLHA
                 player = Pessoa("Guerreiro", nome, 900, 10, 200, 70, [])
                 player.status()
             if escolha2 == 2:
                 print("Ola", cores.OKBLUE + nome + cores.ENDC, "bem vindo,", "voce esta com a classe Mago!")
-                # Instancia do Mago
+                # Instancia do Mago SUA ESCOLHA
                 player = Pessoa("Mago", nome, 600, 150, 30, 15, [])
                 player.status()
             if escolha2 == 3:
                 print("Ola", cores.WARNING + nome + cores.ENDC, "bem vindo,", "voce esta com a classe Campones!")
-                # Instancia do Campones
+                # Instancia do Campones SUA ESCOLHA
                 player = Pessoa("Campones", nome, 200, 10, 10, 5, [])
                 player.status()
                 # Instancia de Inimigos
@@ -91,11 +100,13 @@ while ligar:
     else:
 
         inimigo = random.randrange(1, 3)
+        # INIMIGO LADRÃO
         if inimigo == 1:
             print(cores.FAIL + "Confronto:", ladrao.nome + cores.ENDC)
             player.definir_acao()
             ladrao.status_inimigo()
             primeira_escolha = int(input("Escolha: "))
+            # ESCOLHA 1
             if primeira_escolha == 1:
                 if player.tipo == "Campones":
                     print("Voce consegue correr devido a sua grande agilidade de arador de campos")
@@ -122,18 +133,18 @@ while ligar:
                     escolha2 = random.randrange(1, 4)
                     if escolha2 == 1:
                         print("Ola", cores.FAIL + nome + cores.ENDC, "bem vindo,", "voce esta com a classe Guerreiro!")
-                        # Instancia do Guerreiro
+                        # Instancia do Guerreiro SUA ESCOLHA
                         player = Pessoa("Guerreiro", nome, 900, 10, 200, 70, [])
                         player.status()
                     if escolha2 == 2:
                         print("Ola", cores.OKBLUE + nome + cores.ENDC, "bem vindo,", "voce esta com a classe Mago!")
-                        # Instancia do Mago
+                        # Instancia do Mago SUA ESCOLHA
                         player = Pessoa("Mago", nome, 600, 150, 30, 15, [])
                         player.status()
                     if escolha2 == 3:
                         print("Ola", cores.WARNING + nome + cores.ENDC, "bem vindo,",
                               "voce esta com a classe Campones!")
-                        # Instancia do Campones
+                        # Instancia do Campones SUA ESCOLHA
                         player = Pessoa("Campones", nome, 200, 10, 10, 5, [])
                         player.status()
                         # Instancia de Inimigos
@@ -142,6 +153,7 @@ while ligar:
                     continue
                 else:
                     break
+            # ESCOLHA 2
             elif primeira_escolha == 2:
                 dano = str(player.gerar_dano())
                 print(
@@ -151,11 +163,20 @@ while ligar:
                     print(cores.FAIL + ladrao.nome + " foi derrotado." + cores.ENDC)
                 else:
                     ladrao.status_inimigo()
+            # ESCOLHA 3
             elif primeira_escolha == 3:
                 if player.tipo == "Campones":
                     print("Você cava um buraco e se joga nele escapando de seu inimigo!")
                     print(cores.WARNING + "Voce Escapou! Os monstros ficaram vivos aterrorizando mythril!" + cores.ENDC)
                     break
+                elif player.tipo == "Mago":
+                        print("MAGO ESCOLHENDO")
+                        player.definir_magia()
+                        escolher_magia = input("Escolha: ")
+                        magia_escolhida = Magias.gerar_dano_magico(escolher_magia)
+                        print(magia_escolhida)
+                elif player.tipo == "Guerreiro":
+                    print("MOSTRAR EQUIPAMENTOS")
             else:
                 print("Digite 1, 2 ou 3!")
                 continue
@@ -170,11 +191,13 @@ while ligar:
                     ladrao.nome + " ataca voce e atinge " + dano + " pontos de " + cores.FAIL + "vida(HP)" + cores.ENDC + " com uma reada!")
                 player.status()
 
+        # INIMIGO RATO
         elif inimigo == 2:
             print(cores.WARNING + "Confronto: " + rato.nome + cores.ENDC)
             rato.status_animal()
             player.definir_acao()
             primeira_escolha = int(input("Escolha: "))
+            # ESCOLHA 1
             if primeira_escolha == 1:
                 if player.tipo == "Campones":
                     print("Voce consegue correr devido a sua grande agilidade de arador de campos")
@@ -205,18 +228,18 @@ while ligar:
                     escolha2 = random.randrange(1, 4)
                     if escolha2 == 1:
                         print("Ola", cores.FAIL + nome + cores.ENDC, "bem vindo,", "voce esta com a classe Guerreiro!")
-                        # Instancia do Guerreiro
+                        # Instancia do Guerreiro SUA ESCOLHA
                         player = Pessoa("Guerreiro", nome, 900, 10, 200, 70, [])
                         player.status()
                     if escolha2 == 2:
                         print("Ola", cores.OKBLUE + nome + cores.ENDC, "bem vindo,", "voce esta com a classe Mago!")
-                        # Instancia do Mago
+                        # Instancia do Mago SUA ESCOLHA
                         player = Pessoa("Mago", nome, 600, 150, 30, 15, [])
                         player.status()
                     if escolha2 == 3:
                         print("Ola", cores.WARNING + nome + cores.ENDC, "bem vindo,",
                               "voce esta com a classe Campones!")
-                        # Instancia do Campones
+                        # Instancia do Campones SUA ESCOLHA
                         player = Pessoa("Campones", nome, 200, 10, 10, 5, [])
                         player.status()
                         # Instancia de Inimigos
@@ -231,6 +254,7 @@ while ligar:
                         save_antigo = open("./save.txt", "w+")
                         save_antigo.write(nome)
                     break
+            # ESCOLHA 2
             elif primeira_escolha == 2:
                 dano = str(player.gerar_dano())
                 rato.levar_dano(int(dano))
@@ -246,12 +270,20 @@ while ligar:
                     print(
                         rato.nome + " ataca voce e atinge " + dano + " pontos de " + cores.FAIL + "vida(HP)" + cores.ENDC + " com sua leptospirose!")
                     player.status()
+            # ESCOLHA 3
             elif primeira_escolha == 3:
                 if player.tipo == "Campones":
                     print("Você cava um buraco e se joga nele escapando de seu inimigo!")
                     print(
                         cores.WARNING + "Voce Escapou! Os monstros ficaram vivos aterrorizando mythril!" + cores.ENDC)
                     break
+                elif player.tipo == "Mago":
+                        print("MAGO ESCOLHENDO")
+                        player.definir_magia()
+                        escolher_magia = input("Escolha: ")
+                        magia_escolhida = Magias.gerar_dano_magico(escolher_magia)
+                        print(magia_escolhida)
+                elif player.tipo == "Guerreiro":
+                    print("MOSTRAR EQUIPAMENTOS")
             else:
                 print("Digite 1, 2 ou 3!")
-                continue

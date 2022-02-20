@@ -8,7 +8,12 @@ class Magias:
         self.dano = dano
         self.tipo = tipo
 
-    def gerar_dano_magico(self):
-        baixo = self.dmg - 15
-        alto = self.dmg + 15
+    def gerar_dano_magico(tipo):
+        if (tipo == 3):
+            # Magia Negra
+            baixo = 80 - 15
+            alto = 400 + 50
+        else:
+            baixo = 50
+            alto = 100
         return random.randrange(baixo, alto)
