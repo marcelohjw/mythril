@@ -170,11 +170,17 @@ while ligar:
                     print(cores.WARNING + "Voce Escapou! Os monstros ficaram vivos aterrorizando mythril!" + cores.ENDC)
                     break
                 elif player.tipo == "Mago":
-                        print("MAGO ESCOLHENDO")
+                        print(cores.WARNING + "MAGO ESCOLHENDO" + cores.ENDC)
                         player.definir_magia()
                         escolher_magia = input("Escolha: ")
-                        magia_escolhida = Magias.gerar_dano_magico(escolher_magia)
-                        print(magia_escolhida)
+                        dano_magia_escolhida = Magias.gerar_dano_magico(escolher_magia)
+                        print(
+                            "Voce ataca " + ladrao.nome + " e atinge " + str(dano_magia_escolhida) + " pontos de " + cores.FAIL + "vida(HP)" + cores.ENDC)
+                        ladrao.levar_dano(int(dano_magia_escolhida))
+                        if ladrao.obter_hp() == 0:
+                            print(cores.FAIL + ladrao.nome + " foi derrotado." + cores.ENDC)
+                        else:
+                            ladrao.status_inimigo()
                 elif player.tipo == "Guerreiro":
                     print("MOSTRAR EQUIPAMENTOS")
             else:
@@ -278,11 +284,17 @@ while ligar:
                         cores.WARNING + "Voce Escapou! Os monstros ficaram vivos aterrorizando mythril!" + cores.ENDC)
                     break
                 elif player.tipo == "Mago":
-                        print("MAGO ESCOLHENDO")
+                        print(cores.WARNING + "MAGO ESCOLHENDO" + cores.ENDC)
                         player.definir_magia()
                         escolher_magia = input("Escolha: ")
-                        magia_escolhida = Magias.gerar_dano_magico(escolher_magia)
-                        print(magia_escolhida)
+                        dano_magia_escolhida = Magias.gerar_dano_magico(escolher_magia)
+                        print(
+                            "Voce ataca " + rato.nome + " e atinge " + str(dano_magia_escolhida) + " pontos de " + cores.FAIL + "vida(HP)" + cores.ENDC)
+                        rato.levar_dano(int(dano_magia_escolhida))
+                        if rato.obter_hp() == 0:
+                            print(cores.FAIL + rato.nome + " foi derrotado." + cores.ENDC)
+                        else:
+                            rato.status()
                 elif player.tipo == "Guerreiro":
                     print("MOSTRAR EQUIPAMENTOS")
             else:
