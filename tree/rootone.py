@@ -198,6 +198,12 @@ else:
                         player.definir_magia()
                         escolher_magia = input("Escolha: ")
                         print(escolher_magia)
+                        dano = str(Magias.gerar_dano_magico(escolher_magia))
+                        ladrao.levar_dano(int(dano))
+                        if ladrao.obter_hp() == 0:
+                            print(cores.FAIL + ladrao.nome + " foi derrotado." + cores.ENDC)
+                        else:
+                            ladrao.status_inimigo()
                     elif player.tipo == "Guerreiro":
                         print("MOSTRAR EQUIPAMENTOS")
                 else:
@@ -307,6 +313,12 @@ else:
                         player.definir_magia()
                         escolher_magia = input("Escolha: ")
                         print(escolher_magia)
+                        dano = str(Magias.gerar_dano_magico(escolher_magia))
+                        rato.levar_dano(int(dano))
+                        if rato.obter_hp() == 0:
+                            print(cores.FAIL + rato.nome + " foi derrotado." + cores.ENDC)
+                        else:
+                            continue
                     elif player.tipo == "Guerreiro":
                         print("MOSTRAR EQUIPAMENTOS")
                     continue
