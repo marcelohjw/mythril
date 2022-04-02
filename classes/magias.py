@@ -11,7 +11,7 @@ class Magias:
     def gerar_dano_magico(tipo):
         if (tipo == 3):
             # Magia Negra
-            baixo = 80
+            baixo = 250
             alto = 300
         else:
             baixo = 50

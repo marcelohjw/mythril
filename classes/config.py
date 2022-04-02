@@ -125,6 +125,14 @@ class Pessoa:
     def obter_hp(self):
         return self.hp
 
+    def gastar_magia(self, tipo):
+        if (tipo == 4):
+            self.mp -= 2
+        if tipo == 3:
+            self.mp -= 80
+            if self.mp <0:
+                self.mp = 0
+
 
 class Animal:
     def __init__(self, nome, hp, e, atka, atkb):
@@ -208,3 +216,6 @@ class Animal:
 
     def obter_hp(self):
         return self.hp
+
+    def gastar_energia(self):
+        self.energia -= 10

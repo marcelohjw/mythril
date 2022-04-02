@@ -25,6 +25,7 @@ else:
         nome = save_antigo.read()
     else:
         nome = input("Qual o seu nome? : ")
+    # MUDEI PARA COMEÇAR SEMPRE MAGO AQUI
     #escolha = random.randrange(1, 4)
     escolha = 2
     if escolha == 1:
@@ -201,6 +202,7 @@ else:
                         player.definir_magia()
                         escolher_magia = input("Escolha: ")
                         dano = str(Magias.gerar_dano_magico(int(escolher_magia)))
+                        player.gastar_magia(int(escolher_magia))
                         ladrao.levar_dano(int(dano))
                         print(
                         "Voce ataca " + ladrao.nome + " com sua magia e atinge " + dano + " pontos de " + cores.FAIL + "vida(HP)" + cores.ENDC)
@@ -219,6 +221,7 @@ else:
                 else:
                     # Ataques do Inimigo Ladrao
                     dano = str(ladrao.gerar_dano())
+                    ladrao.gastar_magia(4)
                     player.levar_dano(int(dano))
                     print()
                     print(
@@ -311,6 +314,7 @@ else:
                         print(cores.OKBLUE + "MAGO ESCOLHENDO" + cores.ENDC)
                         player.definir_magia()
                         escolher_magia = input("Escolha: ")
+                        player.gastar_magia(int(escolher_magia))
                         dano = str(Magias.gerar_dano_magico(int(escolher_magia)))
                         rato.levar_dano(int(dano))
                         print(
@@ -329,6 +333,7 @@ else:
                 else:
                     # Ataques do Inimigo Rato
                     dano = str(rato.gerar_dano())
+                    rato.gastar_energia()
                     player.levar_dano(int(dano))
                     print(
                         rato.nome + " ataca voce e atinge " + dano + " pontos de " + cores.FAIL + "vida(HP)" + cores.ENDC + " com sua leptospirose!")
