@@ -31,17 +31,17 @@ class Pessoa:
         i = 1
         print("\n" + cores.BOLD + self.nome + cores.ENDC)
         if self.tipo == "Guerreiro":
-            print(cores.FAIL + cores.BOLD + "Acoes" + cores.ENDC)
+            print(cores.FAIL + cores.BOLD + "Ações" + cores.ENDC)
             for item in self.opcoes:
                 print("    " + str(i) + ":", item)
                 i += 1
         elif self.tipo == "Mago":
-            print(cores.OKBLUE + cores.BOLD + "Acoes" + cores.ENDC)
+            print(cores.OKBLUE + cores.BOLD + "Ações" + cores.ENDC)
             for item in self.opcoes_mago:
                 print("    " + str(i) + ":", item)
                 i += 1
         elif self.tipo == "Campones":
-            print(cores.WARNING + cores.BOLD + "Acoes" + cores.ENDC)
+            print(cores.WARNING + cores.BOLD + "Ações" + cores.ENDC)
             for item in self.opcoes_campones:
                 print("    " + str(i) + ":", item)
                 i += 1

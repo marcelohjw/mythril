@@ -10,7 +10,7 @@ import os
 print("------------------------------------------------------------------------------------------")
 print("Modos de Jogo:")
 
-modos = ["1.    O jogo define a Classe por voce",
+modos = ["1.    O jogo define a Classe por você",
          "2.    Você escolhe sua Classe"]
 
 for modo in modos:
@@ -106,9 +106,9 @@ else:
                 break
         else:
             # JOGO CONTINUA
-            print("----------------------------------------------------------")
+            print(cores.HEADER + "----------------------------------------------------------" + cores.ENDC)
             print(cores.HEADER + "NOVO TURNO" + cores.ENDC)
-            print("----------------------------------------------------------")
+            print(cores.HEADER + "----------------------------------------------------------" + cores.ENDC)
             inimigo = random.randrange(1, 3)
             print()
 
@@ -121,8 +121,8 @@ else:
                 # ESCOLHA 1
                 if primeira_escolha == 1:
                     if player.tipo == "Campones":
-                        print("Voce consegue correr devido a sua grande agilidade de arador de campos")
-                        print(cores.WARNING + "Voce Escapou! Os monstros ficaram vivos aterrorizando mythril!" + cores.ENDC)
+                        print("Você consegue correr devido a sua grande agilidade de arador de campos")
+                        print(cores.WARNING + "Você Escapou! Os monstros ficaram vivos aterrorizando mythril!" + cores.ENDC)
                         questao = input("Deseja salvar seu nome? Sim(S)/Nao(N): ")
                         questao = questao.lower()
                         if questao == "s":
@@ -131,9 +131,9 @@ else:
                             save_antigo.write(nome)
                         break
                     elif player.tipo == "Mago":
-                        print("Voce consegue correr mas deixa cair seu cajado")
+                        print("Você consegue correr mas deixa cair seu cajado")
                         print(
-                            cores.OKBLUE + "Voce Escapou! Os monstros ficaram vivos aterrorizando mythril!" + cores.ENDC)
+                            cores.OKBLUE + "Você Escapou! Os monstros ficaram vivos aterrorizando mythril!" + cores.ENDC)
                         questao = input("Deseja salvar seu nome? Sim(S)/Nao(N): ")
                         questao = questao.lower()
                         if questao == "s":
@@ -141,8 +141,8 @@ else:
                             save_antigo = open("./save.txt", "w+")
                             save_antigo.write(nome)
                         break
-                    print("Voce consegue correr no momento em que ve ele mas deixa cair seu celular")
-                    print(cores.FAIL + "Voce Perdeu!" + cores.ENDC)
+                    print("Você consegue correr no momento em que vê ele mas deixa cair seu celular")
+                    print(cores.FAIL + "Você Perdeu!" + cores.ENDC)
                     print("==========================================================================================")
                     novamente = input("Tentar Novamente? Sim(S)/Nao(N): ")
                     novamente = novamente.lower()
@@ -151,8 +151,8 @@ else:
                         if escolha2 == 1:
                             # Instancia do Guerreiro O JOGO ESCOLHE
                             player = Pessoa("Guerreiro", nome, 900, 10, 200, 70, [])
-                            print("Ola", cores.FAIL + player.nome + cores.ENDC, "bem vindo,",
-                                  "voce esta com a classe Guerreiro!")
+                            print("Olá", cores.FAIL + player.nome + cores.ENDC, "bem vindo,",
+                                  "você está com a classe Guerreiro!")
                             player.status()
                         if escolha2 == 2:
                             # Instancia do Mago O JOGO ESCOLHE
@@ -161,13 +161,13 @@ else:
                             negra = Magias("Negra", 80, 400, "negra")
                             magias_mago = [fogo, agua, negra]
                             player = Pessoa("Mago", nome, 600, 150, 30, 15, magias_mago)
-                            print("Ola", cores.OKBLUE + player.nome + cores.ENDC, "bem vindo,", "voce esta com a classe Mago!")
+                            print("Olá", cores.OKBLUE + player.nome + cores.ENDC, "bem vindo,", "você está com a classe Mago!")
                             player.status()
                         if escolha2 == 3:
                             # Instancia do Campones O JOGO ESCOLHE
                             player = Pessoa("Campones", nome, 200, 10, 10, 5, [])
-                            print("Ola", cores.WARNING + player.nome + cores.ENDC, "bem vindo,",
-                                  "voce esta com a classe Campones!")
+                            print("Olá", cores.WARNING + player.nome + cores.ENDC, "bem vindo,",
+                                  "vocé está com a classe Campones!")
                             player.status()
                         # Instancia de Inimigos
                         ladrao = Pessoa("Ladrao", "Shrek", 600, 10, 200, 120, [])
@@ -185,7 +185,7 @@ else:
                 elif primeira_escolha == 2:
                     dano = str(player.gerar_dano())
                     print(
-                        "Voce ataca " + ladrao.nome + " e atinge " + dano + " pontos de " + cores.FAIL + "vida(HP)" + cores.ENDC)
+                        "Você ataca " + ladrao.nome + " e atinge " + dano + " pontos de " + cores.FAIL + "vida(HP)" + cores.ENDC)
                     ladrao.levar_dano(int(dano))
                     if ladrao.obter_hp() == 0:
                         print(cores.FAIL + ladrao.nome + " foi derrotado." + cores.ENDC)
@@ -195,7 +195,7 @@ else:
                 elif primeira_escolha == 3:
                     if player.tipo == "Campones":
                         print("Você cava um buraco e se joga nele escapando de seu inimigo!")
-                        print(cores.WARNING + "Voce Escapou! Os monstros ficaram vivos aterrorizando mythril!" + cores.ENDC)
+                        print(cores.WARNING + "Você Escapou! Os monstros ficaram vivos aterrorizando mythril!" + cores.ENDC)
                         break
                     elif player.tipo == "Mago":
                         print(cores.OKBLUE + "MAGO ESCOLHENDO" + cores.ENDC)
@@ -216,7 +216,7 @@ else:
                     print("Digite 1, 2 ou 3!")
                     continue
                 if ladrao.obter_hp() == 0:
-                    print(cores.OKGREEN + "Voce Venceu " + ladrao.nome + "!" + cores.ENDC)
+                    print(cores.OKGREEN + "Você Venceu " + ladrao.nome + "!" + cores.ENDC)
                     ligar = False
                 else:
                     # Ataques do Inimigo Ladrao
@@ -225,7 +225,7 @@ else:
                     player.levar_dano(int(dano))
                     print()
                     print(
-                        ladrao.nome + " ataca voce e atinge " + dano + " pontos de " + cores.FAIL + "vida(HP)" + cores.ENDC + " com uma reada!")
+                        ladrao.nome + " ataca você e atinge " + dano + " pontos de " + cores.FAIL + "vida(HP)" + cores.ENDC + " com uma reada!")
                     player.status()
 
             # Inimigo RATO
@@ -237,7 +237,7 @@ else:
                 primeira_escolha = int(input("Escolha: "))
                 if primeira_escolha == 1:
                     if player.tipo == "Campones":
-                        print("Voce consegue correr devido a sua grande agilidade de arador de campos")
+                        print("Você consegue correr devido a sua grande agilidade de arador de campos")
                         print(
                             cores.WARNING + "Voce Escapou! Os monstros ficaram vivos aterrorizando mythril!" + cores.ENDC)
                         questao = input("Deseja salvar seu nome? Sim(S)/Nao(N): ")
@@ -258,8 +258,8 @@ else:
                             save_antigo = open("./save.txt", "w+")
                             save_antigo.write(nome)
                         break
-                    print("Voce consegue correr no momento em que ve ele mas deixa cair seu celular")
-                    print(cores.FAIL + "Voce Perdeu!" + cores.ENDC)
+                    print("Você consegue correr no momento em que ve ele mas deixa cair seu celular")
+                    print(cores.FAIL + "Você Perdeu!" + cores.ENDC)
                     print("==========================================================================================")
                     novamente = input("Tentar Novamente? Sim(S)/Nao(N): ")
                     novamente = novamente.lower()
@@ -268,8 +268,8 @@ else:
                         if escolha2 == 1:
                             # Instancia do Guerreiro O JOGO ESCOLHE
                             player = Pessoa("Guerreiro", nome, 900, 10, 200, 70, [])
-                            print("Ola", cores.FAIL + player.nome + cores.ENDC, "bem vindo,",
-                                  "voce esta com a classe Guerreiro!")
+                            print("Olá", cores.FAIL + player.nome + cores.ENDC, "bem vindo,",
+                                  "você está com a classe Guerreiro!")
                             player.status()
                         if escolha2 == 2:
                             # Instancia do Mago O JOGO ESCOLHE
@@ -278,13 +278,13 @@ else:
                             negra = Magias("Negra", 80, 400, "negra")
                             magias_mago = [fogo, agua, negra]
                             player = Pessoa("Mago", nome, 600, 150, 30, 15, magias_mago)
-                            print("Ola", cores.OKBLUE + player.nome + cores.ENDC, "bem vindo,", "voce esta com a classe Mago!")
+                            print("Olá", cores.OKBLUE + player.nome + cores.ENDC, "bem vindo,", "você está com a classe Mago!")
                             player.status()
                         if escolha2 == 3:
                             # Instancia do Campones O JOGO ESCOLHE
                             player = Pessoa("Campones", nome, 200, 10, 10, 5, [])
-                            print("Ola", cores.WARNING + player.nome + cores.ENDC, "bem vindo,",
-                                  "voce esta com a classe Campones!")
+                            print("Olá", cores.WARNING + player.nome + cores.ENDC, "bem vindo,",
+                                  "você está com a classe Campones!")
                             player.status()
                         # Instancia de Inimigos
                         ladrao = Pessoa("Ladrao", "Robertson", 600, 10, 200, 120, [])
@@ -302,7 +302,7 @@ else:
                     dano = str(player.gerar_dano())
                     rato.levar_dano(int(dano))
                     print(
-                        "Voce ataca " + rato.nome + " e atinge " + dano + " pontos de " + cores.FAIL + "vida(HP)!" + cores.ENDC)
+                        "Você ataca " + rato.nome + " e atinge " + dano + " pontos de " + cores.FAIL + "vida(HP)!" + cores.ENDC)
                     rato.status_animal()
                     print()
                 elif primeira_escolha == 3:
@@ -328,7 +328,7 @@ else:
                 else:
                     print("Digite 1, 2 ou 3!")
                 if rato.obter_hp() == 0:
-                    print(cores.OKGREEN + "Voce Venceu " + rato.nome + "!" + cores.ENDC)
+                    print(cores.OKGREEN + "Você Venceu " + rato.nome + "!" + cores.ENDC)
                     ligar = False
                 else:
                     # Ataques do Inimigo Rato
@@ -336,6 +336,6 @@ else:
                     rato.gastar_energia()
                     player.levar_dano(int(dano))
                     print(
-                        rato.nome + " ataca voce e atinge " + dano + " pontos de " + cores.FAIL + "vida(HP)" + cores.ENDC + " com sua leptospirose!")
+                        rato.nome + " ataca você e atinge " + dano + " pontos de " + cores.FAIL + "vida(HP)" + cores.ENDC + " com sua leptospirose!")
                     player.status()
                     continue

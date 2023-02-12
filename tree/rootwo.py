@@ -6,6 +6,10 @@ from classes.magias import Magias
 
 import random
 
+print(cores.HEADER + "----------------------------------------------------------" + cores.ENDC)
+print(cores.HEADER + "ESCOLHA DE CLASSE" + cores.ENDC)
+print(cores.HEADER + "----------------------------------------------------------" + cores.ENDC)
+
 print("Escolha com qual classe desejas jogar:")
 i = 0
 
@@ -23,12 +27,18 @@ for claxx in classes:
 escolha = int(input("Escolha: "))
 nome = input("Qual o seu nome? ")
 if escolha == 1:
-    print("Ola", cores.FAIL + nome + cores.ENDC, "bem vindo,", "voce esta com a classe Guerreiro!")
+    print(cores.HEADER + "----------------------------------------------------------" + cores.ENDC)
+    print(cores.FAIL + "MYTHRIL" + cores.ENDC)
+    print(cores.HEADER + "----------------------------------------------------------" + cores.ENDC)
+    print("Olá", cores.FAIL + nome + cores.ENDC, "bem vindo,", "você está com a classe Guerreiro!")
     # Instancia do Guerreiro SUA ESCOLHA
     player = Pessoa("Guerreiro", nome, 900, 10, 200, 70, [])
     player.status()
 if escolha == 2:
-    print("Ola", cores.OKBLUE + nome + cores.ENDC, "bem vindo,", "voce esta com a classe Mago!")
+    print(cores.HEADER + "----------------------------------------------------------" + cores.ENDC)
+    print(cores.FAIL + "MYTHRIL" + cores.ENDC)
+    print(cores.HEADER + "----------------------------------------------------------" + cores.ENDC)
+    print("Olá", cores.OKBLUE + nome + cores.ENDC, "bem vindo,", "você está com a classe Mago!")
     # Instancia do Mago SUA ESCOLHA
     fogo = Magias("Fogo", 20, 100, "basica")
     agua = Magias("Água", 20, 100, "basica")
@@ -37,9 +47,12 @@ if escolha == 2:
     player = Pessoa("Mago", nome, 600, 150, 30, 15, magias_mago)
     player.status()
 if escolha == 3:
-    print("Ola", cores.WARNING + nome + cores.ENDC, "bem vindo,", "voce esta com a classe Campones!")
+    print(cores.HEADER + "----------------------------------------------------------" + cores.ENDC)
+    print(cores.FAIL + "MYTHRIL" + cores.ENDC)
+    print(cores.HEADER + "----------------------------------------------------------" + cores.ENDC)
+    print("Olá", cores.WARNING + nome + cores.ENDC, "bem vindo,", "você está com a classe Campones!")
     # Instancia do Campones SUA ESCOLHA
-    player = Pessoa("Campones", nome, 200, 10, 10, 5), []
+    player = Pessoa("Campones", nome, 200, 10, 10, 5, [])
     player.status()
 print("\n")
 
@@ -51,19 +64,19 @@ ligar = True
 
 # COMEÇA O JOGO PELA PRIMEIRA VEZ
 while ligar:
-    print("----------------------------------------------------------")
+    print(cores.HEADER + "----------------------------------------------------------" + cores.ENDC)
     print(cores.HEADER + "NOVO TURNO" + cores.ENDC)
-    print("----------------------------------------------------------")
+    print(cores.HEADER + "----------------------------------------------------------" + cores.ENDC)
 
     # Verificar se acabou
     if ladrao.obter_hp() == 0:
-        print(cores.OKGREEN + "Voce Venceu " + ladrao.nome + "!" + cores.ENDC)
+        print(cores.OKGREEN + "Você Venceu " + ladrao.nome + "!" + cores.ENDC)
         ligar = False
     elif rato.obter_hp() == 0:
-        print(cores.OKGREEN + "Voce Venceu " + rato.nome + "!" + cores.ENDC)
+        print(cores.OKGREEN + "Você Venceu " + rato.nome + "!" + cores.ENDC)
         ligar = False
     elif player.obter_hp() == 0:
-        print(cores.FAIL + "Voce Perdeu!" + cores.ENDC)
+        print(cores.FAIL + "Você Perdeu!" + cores.ENDC)
         print("==========================================================================================")
         novamente = input("Tentar Novamente? Sim(S)/Nao(N): ")
         novamente = novamente.lower()
@@ -77,17 +90,17 @@ while ligar:
         if novamente == "s":
             escolha2 = random.randrange(1, 4)
             if escolha2 == 1:
-                print("Ola", cores.FAIL + nome + cores.ENDC, "bem vindo,", "voce esta com a classe Guerreiro!")
+                print("Olá", cores.FAIL + nome + cores.ENDC, "bem vindo,", "você está com a classe Guerreiro!")
                 # Instancia do Guerreiro SUA ESCOLHA
                 player = Pessoa("Guerreiro", nome, 900, 10, 200, 70, [])
                 player.status()
             if escolha2 == 2:
-                print("Ola", cores.OKBLUE + nome + cores.ENDC, "bem vindo,", "voce esta com a classe Mago!")
+                print("Olá", cores.OKBLUE + nome + cores.ENDC, "bem vindo,", "você está com a classe Mago!")
                 # Instancia do Mago SUA ESCOLHA
                 player = Pessoa("Mago", nome, 600, 150, 30, 15, [])
                 player.status()
             if escolha2 == 3:
-                print("Ola", cores.WARNING + nome + cores.ENDC, "bem vindo,", "voce esta com a classe Campones!")
+                print("Olá", cores.WARNING + nome + cores.ENDC, "bem vindo,", "você está com a classe Campones!")
                 # Instancia do Campones SUA ESCOLHA
                 player = Pessoa("Campones", nome, 200, 10, 10, 5, [])
                 player.status()
@@ -109,15 +122,15 @@ while ligar:
             # ESCOLHA 1
             if primeira_escolha == 1:
                 if player.tipo == "Campones":
-                    print("Voce consegue correr devido a sua grande agilidade de arador de campos")
-                    print(cores.WARNING + "Voce Escapou! Os monstros ficaram vivos aterrorizando mythril!" + cores.ENDC)
+                    print("Você consegue correr devido a sua grande agilidade de arador de campos")
+                    print(cores.WARNING + "Você Escapou! Os monstros ficaram vivos aterrorizando mythril!" + cores.ENDC)
                     break
                 elif player.tipo == "Mago":
-                    print("Voce consegue correr mas deixa cair seu cajado")
-                    print(cores.OKBLUE + "Voce Escapou! Os monstros ficaram vivos aterrorizando mythril!" + cores.ENDC)
+                    print("Você consegue correr mas deixa cair seu cajado")
+                    print(cores.OKBLUE + "Você Escapou! Os monstros ficaram vivos aterrorizando mythril!" + cores.ENDC)
                     break
-                print("Voce consegue correr no momento em que ve ele mas deixa cair seu celular")
-                print(cores.FAIL + "Voce Perdeu!" + cores.ENDC)
+                print("Você consegue correr no momento em que vê ele mas deixa cair seu celular")
+                print(cores.FAIL + "Você Perdeu!" + cores.ENDC)
                 print("==========================================================================================")
                 novamente = input("Tentar Novamente? Sim(S)/Nao(N): ")
                 novamente = novamente.lower()
