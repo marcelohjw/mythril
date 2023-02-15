@@ -13,7 +13,7 @@ class cores:
 
 
 class Pessoa:
-    def __init__(self, tipo, nome, hp, mp, atka, atkb, magias):
+    def __init__(self, tipo, nome, hp, mp, atka, atkb, magias, equipamentos):
         self.hp = hp
         self.mp = mp
         self.maxhp = hp
@@ -26,6 +26,7 @@ class Pessoa:
         self.opcoes_mago = ["Correr", "Atacar", "Magia"]
         self.opcoes_campones = ["Correr", "Atacar", "Cavar Buraco"]
         self.magias = magias
+        self.equipamentos = equipamentos
 
     def definir_acao(self):
         i = 1
@@ -53,6 +54,13 @@ class Pessoa:
             print("    " + str(i) + ":", spell.nome, "(Cost:", str(spell.custo) + ")")
             i += 1
 
+    def escolha_equipamentos(self):
+        i = 1
+        print(cores.FAIL + cores.BOLD + "Equipamentos" + cores.ENDC)
+        for equip in self.equipamentos:
+            print("    " + str(i) + ":", equip.nome, "(Cost:", str(equip.custo) + ")")
+            i += 1
+
     def status(self):
         hp_bar = ""
         bar_ticks = (self.hp / self.maxhp) * 100 / 4
@@ -77,11 +85,24 @@ class Pessoa:
         hp_string = str(self.hp) + "/" + str(self.maxhp)
         mp_string = str(self.mp) + "/" + str(self.maxmp)
 
-        print("                      HP                          MP")
-        print("                      -------------------------------------------")
-        print(cores.BOLD + self.nome + "(" + self.tipo + ")" + "   " + cores.OKGREEN +
-              hp_string + "|" + hp_bar + "|  " +
-              cores.OKBLUE + mp_string + "|" + mp_bar + "|" + cores.ENDC)
+        if self.tipo == "Guerreiro":
+            print("                      HP                          ENERGIA")
+            print("                      -------------------------------------------")
+            print(cores.BOLD + self.nome + "(" + self.tipo + ")" + "   " + cores.OKGREEN +
+                hp_string + "|" + hp_bar + "|  " +
+                cores.WARNING + mp_string + "|" + mp_bar + "|" + cores.ENDC)
+        elif self.tipo == "Mago":
+            print("                      HP                          MP")
+            print("                      -------------------------------------------")
+            print(cores.BOLD + self.nome + "(" + self.tipo + ")" + "   " + cores.OKGREEN +
+                hp_string + "|" + hp_bar + "|  " +
+                cores.OKBLUE + mp_string + "|" + mp_bar + "|" + cores.ENDC)
+        elif self.tipo == "Campones":
+            print("                      HP                          ENERGIA")
+            print("                      -------------------------------------------")
+            print(cores.BOLD + self.nome + "(" + self.tipo + ")" + "   " + cores.OKGREEN +
+                hp_string + "|" + hp_bar + "|  " +
+                cores.WARNING + mp_string + "|" + mp_bar + "|" + cores.ENDC)
 
     def status_inimigo(self):
         hp_bar = ""
@@ -130,6 +151,20 @@ class Pessoa:
             self.mp -= 2
         if tipo == 3:
             self.mp -= 80
+            if self.mp <0:
+                self.mp = 0
+
+    def gastar_energia(self, tipo):
+        if (tipo == 1):
+            self.mp -= 2
+            if self.mp <0:
+                self.mp = 0
+        elif (tipo == 2):
+            self.mp -= 3
+            if self.mp <0:
+                self.mp = 0
+        elif (tipo == 3):
+            self.mp -= 14
             if self.mp <0:
                 self.mp = 0
 
