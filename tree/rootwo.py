@@ -118,7 +118,12 @@ while ligar:
             print(cores.FAIL + "Confronto:", ladrao.nome + cores.ENDC)
             player.definir_acao()
             ladrao.status_inimigo()
-            primeira_escolha = int(input("Escolha: "))
+            while True:
+                try:
+                    primeira_escolha = int(input("Escolha: "))
+                    break
+                except:
+                    print("Digite 1, 2 ou 3!")
             # ESCOLHA 1
             if primeira_escolha == 1:
                 if player.tipo == "Campones":
@@ -215,7 +220,12 @@ while ligar:
             print(cores.WARNING + "Confronto: " + rato.nome + cores.ENDC)
             rato.status_animal()
             player.definir_acao()
-            primeira_escolha = int(input("Escolha: "))
+            while True:
+                try:
+                    primeira_escolha = int(input("Escolha: "))
+                    break
+                except:
+                    print("Digite 1, 2 ou 3!")
             # ESCOLHA 1
             if primeira_escolha == 1:
                 if player.tipo == "Campones":

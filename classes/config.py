@@ -23,25 +23,56 @@ class Pessoa:
         self.atka = atka
         self.atkb = atkb
         self.opcoes = ["Correr", "Atacar", "Verificar Equipamentos"]
+        self.opcoes_bloq_1 = ["Correr", "Verificar Equipamentos"]
+        self.opcoes_bloq_2 = ["Correr", "Atacar"]
         self.opcoes_mago = ["Correr", "Atacar", "Magia"]
+        self.opcoes_mago_bloq_1 = ["Correr", "Atacar"]
+        self.opcoes_mago_bloq_2 = ["Correr", "Magia"]
         self.opcoes_campones = ["Correr", "Atacar", "Cavar Buraco"]
         self.magias = magias
         self.equipamentos = equipamentos
 
-    def definir_acao(self):
+    def definir_acao(self, bloq):
         i = 1
         print("\n" + cores.BOLD + self.nome + cores.ENDC)
         if self.tipo == "Guerreiro":
-            print(cores.FAIL + cores.BOLD + "Ações" + cores.ENDC)
-            for item in self.opcoes:
-                print("    " + str(i) + ":", item)
-                i += 1
+            # VALIDAR VARIAÇÃO DE AÇÕES
+            if bloq:
+                if(bloq == 1):
+                    print(cores.FAIL + cores.BOLD + "Ações" + cores.ENDC)
+                    for item in self.opcoes_bloq_1:
+                        print("    " + str(i) + ":", item)
+                        i += 1
+                if(bloq == 2):
+                    print(cores.FAIL + cores.BOLD + "Ações" + cores.ENDC)
+                    for item in self.opcoes_bloq_2:
+                        print("    " + str(i) + ":", item)
+                        i += 1
+            else:
+                print(cores.FAIL + cores.BOLD + "Ações" + cores.ENDC)
+                for item in self.opcoes:
+                    print("    " + str(i) + ":", item)
+                    i += 1
         elif self.tipo == "Mago":
-            print(cores.OKBLUE + cores.BOLD + "Ações" + cores.ENDC)
-            for item in self.opcoes_mago:
-                print("    " + str(i) + ":", item)
-                i += 1
+            # VALIDAR VARIAÇÃO DE AÇÕES MAGO
+            if bloq:
+                if (bloq == 1):
+                    print(cores.OKBLUE + cores.BOLD + "Ações" + cores.ENDC)
+                    for item in self.opcoes_mago_bloq_1:
+                        print("    " + str(i) + ":", item)
+                        i += 1
+                if (bloq == 2):
+                    print(cores.OKBLUE + cores.BOLD + "Ações" + cores.ENDC)
+                    for item in self.opcoes_mago_bloq_2:
+                        print("    " + str(i) + ":", item)
+                        i += 1
+            else:
+                print(cores.OKBLUE + cores.BOLD + "Ações" + cores.ENDC)
+                for item in self.opcoes_mago:
+                    print("    " + str(i) + ":", item)
+                    i += 1
         elif self.tipo == "Campones":
+            # VALIDAR VARIAÇÃO DE AÇÕES CAMPONES
             print(cores.WARNING + cores.BOLD + "Ações" + cores.ENDC)
             for item in self.opcoes_campones:
                 print("    " + str(i) + ":", item)
@@ -146,9 +177,18 @@ class Pessoa:
     def obter_hp(self):
         return self.hp
 
+    def obter_mp(self):
+        return self.mp
+
     def gastar_magia(self, tipo):
-        if (tipo == 4):
-            self.mp -= 2
+        if (tipo == 1):
+            self.mp -= 20
+            if self.mp <0:
+                self.mp = 0
+        if (tipo == 2):
+            self.mp -= 20
+            if self.mp <0:
+                self.mp = 0
         if tipo == 3:
             self.mp -= 80
             if self.mp <0:
