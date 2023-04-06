@@ -97,6 +97,7 @@ while ligar:
             rato = Animal("Rato", 300, 20, 380, 250)
             continue
         else:
+            ligar = False
             questao = input("Deseja salvar seu nome? Sim(S)/Nao(N): ")
             questao = questao.lower()
             if questao == "s":
@@ -117,6 +118,7 @@ while ligar:
             print(cores.FAIL + "Confronto:", ladrao.nome + cores.ENDC)
             # EXIBIR VARIAÇÃO DE AÇÕES ALEATÓRIAS
             bloq = random.randrange(1, 2)
+            print(bloq)
             player.definir_acao(bloq)
             ladrao.status_inimigo()
 
@@ -186,6 +188,7 @@ while ligar:
                     rato = Animal("Rato", 300, 20, 380, 250)
                     continue
                 else:
+                    ligar = False
                     questao = input("Deseja salvar seu nome? Sim(S)/Nao(N): ")
                     questao = questao.lower()
                     if questao == "s":
@@ -195,7 +198,39 @@ while ligar:
                     break
             # ESCOLHA 2
             elif primeira_escolha == 2:
+                # BLOQ1
                 if (bloq == 1):
+                    # EXIBIR OPÇÕES 1
+                    if player.tipo == "Mago":
+                        dano = str(player.gerar_dano())
+                        ladrao.levar_dano(int(dano))
+                        print(
+                            "Voce ataca " + ladrao.nome + " e atinge " + dano + " pontos de " + cores.FAIL + "vida(HP)!" + cores.ENDC)
+                        if ladrao.obter_hp() == 0:
+                            print(cores.OKGREEN + "Voce Venceu " + ladrao.nome + "!" + cores.ENDC)
+                            ligar = False
+                    elif player.tipo == "Guerreiro":
+                        print(cores.FAIL + "GUERREIRO ESCOLHENDO" + cores.ENDC)
+                        player.escolha_equipamentos()
+                        escolher_equipamento = input("Escolha: ")
+
+                        # VERIFICAR ENERGIA
+                        if player.obter_mp() == 0:
+                            print("Seus pontos de energia acabaram :(")
+                            print(cores.FAIL + "Você Perdeu!" + cores.ENDC)
+                            break
+
+                        dano = str(Equipamentos.gerar_dano_equipamento(int(escolher_equipamento)))
+                        player.gastar_energia(int(escolher_equipamento))
+                        ladrao.levar_dano(int(dano))
+                        print(
+                        "Você ataca " + ladrao.nome + " com seu forte equipamento e atinge " + dano + " pontos de " + cores.FAIL + "vida(HP)" + cores.ENDC)
+                        if ladrao.obter_hp() == 0:
+                            print(cores.FAIL + ladrao.nome + " foi derrotado." + cores.ENDC)
+                        else:
+                            ladrao.status_inimigo()
+                # BLOQ2
+                elif (bloq == 2):
                     # EXIBIR OPÇÕES 1
                     if player.tipo == "Mago":
                         print(cores.OKBLUE + "MAGO ESCOLHENDO" + cores.ENDC)
@@ -297,6 +332,7 @@ while ligar:
                 print()
                 continue
             if ladrao.obter_hp() == 0:
+                inimigo == 2
                 ark = random.randrange(1, 3)
                 if(ark == 2):
                     print(cores.OKGREEN + "Você Venceu " + ladrao.nome + "!" + cores.ENDC)
@@ -315,10 +351,13 @@ while ligar:
         # Inimigo RATO
 
         elif inimigo == 2:
+            if ladrao.obter_hp() == 0:
+                inimigo == 2
             print(cores.WARNING + "Confronto: " + rato.nome + cores.ENDC)
             rato.status_animal()
              # EXIBIR VARIAÇÃO DE AÇÕES ALEATÓRIAS
-            bloq = random.randrange(1, 2)
+            bloq = random.randrange(1, 3)
+            print(bloq)
             player.definir_acao(bloq)
             while True:
                 try:
@@ -386,6 +425,7 @@ while ligar:
                     rato = Animal("Jacaré", 300, 20, 380, 250)
                     continue
                 else:
+                    ligar = False
                     questao = input("Deseja salvar seu nome? Sim(S)/Nao(N): ")
                     questao = questao.lower()
                     if questao == "s":
@@ -394,11 +434,80 @@ while ligar:
                         save_antigo.write(nome)
                     break
             elif primeira_escolha == 2:
-                dano = str(player.gerar_dano())
-                rato.levar_dano(int(dano))
-                print(
-                    "Você ataca " + rato.nome + " e atinge " + dano + " pontos de " + cores.FAIL + "vida(HP)!" + cores.ENDC)
-                rato.status_animal()
+                # BLOQ1
+                if (bloq == 1):
+                    # EXIBIR OPÇÕES 1
+                    if player.tipo == "Mago":
+                        print(cores.OKBLUE + "MAGO ESCOLHENDO" + cores.ENDC)
+                        player.definir_magia()
+                        escolher_magia = input("Escolha: ")
+
+                        # VERIFICAR MP
+                        if player.obter_mp() == 0:
+                            print("Seus pontos de magia acabaram :(")
+                            print(cores.FAIL + "Você Perdeu!" + cores.ENDC)
+                            break
+
+                        dano = str(Magias.gerar_dano_magico(int(escolher_magia)))
+                        player.gastar_magia(int(escolher_magia))
+                        ladrao.levar_dano(int(dano))
+                        print(
+                        "Você ataca " + ladrao.nome + " com sua magia e atinge " + dano + " pontos de " + cores.FAIL + "vida(HP)" + cores.ENDC)
+                        if ladrao.obter_hp() == 0:
+                            print(cores.FAIL + ladrao.nome + " foi derrotado." + cores.ENDC)
+                        else:
+                            ladrao.status_inimigo()
+                    elif player.tipo == "Guerreiro":
+                        print(cores.FAIL + "GUERREIRO ESCOLHENDO" + cores.ENDC)
+                        player.escolha_equipamentos()
+                        escolher_equipamento = input("Escolha: ")
+
+                        # VERIFICAR ENERGIA
+                        if player.obter_mp() == 0:
+                            print("Seus pontos de energia acabaram :(")
+                            print(cores.FAIL + "Você Perdeu!" + cores.ENDC)
+                            break
+
+                        dano = str(Equipamentos.gerar_dano_equipamento(int(escolher_equipamento)))
+                        player.gastar_energia(int(escolher_equipamento))
+                        ladrao.levar_dano(int(dano))
+                        print(
+                        "Você ataca " + ladrao.nome + " com seu forte equipamento e atinge " + dano + " pontos de " + cores.FAIL + "vida(HP)" + cores.ENDC)
+                        if ladrao.obter_hp() == 0:
+                            print(cores.FAIL + ladrao.nome + " foi derrotado." + cores.ENDC)
+                        else:
+                            ladrao.status_inimigo()
+                # BLOQ2 - RATO
+                elif (bloq == 2):
+                    # EXIBIR DE ACORDO COM BLOQ 2
+                    if player.tipo == "Mago":
+                        print(cores.OKBLUE + "MAGO ESCOLHENDO" + cores.ENDC)
+                        player.definir_magia()
+                        escolher_magia = input("Escolha: ")
+
+                        # VERIFICAR MP
+                        if player.obter_mp() == 0:
+                            print("Seus pontos de magia acabaram :(")
+                            print(cores.FAIL + "Você Perdeu!" + cores.ENDC)
+                            break
+
+                        dano = str(Magias.gerar_dano_magico(int(escolher_magia)))
+                        player.gastar_magia(int(escolher_magia))
+                        rato.levar_dano(int(dano))
+                        print(
+                        "Você ataca " + rato.nome + " com sua magia e atinge " + dano + " pontos de " + cores.FAIL + "vida(HP)" + cores.ENDC)
+                        if rato.obter_hp() == 0:
+                            print(cores.FAIL + rato.nome + " foi derrotado." + cores.ENDC)
+                        else:
+                            rato.status_animal()
+                    elif player.tipo == "Guerreiro":
+                        dano = str(player.gerar_dano())
+                        rato.levar_dano(int(dano))
+                        print(
+                            "Voce ataca " + rato.nome + " e atinge " + dano + " pontos de " + cores.FAIL + "vida(HP)!" + cores.ENDC)
+                        if rato.obter_hp() == 0:
+                            print(cores.OKGREEN + "Voce Venceu " + rato.nome + "!" + cores.ENDC)
+                            ligar = False
                 print()
             elif primeira_escolha == 3:
                 if player.tipo == "Campones":

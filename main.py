@@ -21,8 +21,9 @@ if os.path.isfile("./save.txt") and os.stat("./save.txt").st_size != 0:
         print("Bem vindo novamente!")
         from story import storyline
     else:
-       from story import storyline
+        from story import storyline
 else:
+    from story import storyline
     print(cores.FAIL + "Nome antigo não encontrado..." + cores.ENDC)
     print("------------------------------------------------------------------------------------------")
     print("Modos de Jogo:")
